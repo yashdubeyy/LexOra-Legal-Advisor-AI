@@ -36,10 +36,15 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     if (!mounted) return;
 
     // Update the HTML class whenever theme changes
+    const root = document.documentElement;
     if (theme === "dark") {
-      document.documentElement.classList.add("dark");
+      root.classList.add("dark");
+      root.style.colorScheme = "dark";
+      console.log("Setting dark mode");
     } else {
-      document.documentElement.classList.remove("dark");
+      root.classList.remove("dark");
+      root.style.colorScheme = "light";
+      console.log("Setting light mode");
     }
     
     // Save to localStorage

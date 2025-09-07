@@ -5,73 +5,72 @@ import { motion } from "framer-motion";
 import { 
   BookOpenIcon, 
   ClockIcon, 
-  UserIcon, 
   TagIcon,
   DocumentTextIcon,
   ArrowRightIcon
 } from "@heroicons/react/24/outline";
 
-// Sample article data - in a real application, this would come from an API or CMS
+// Sample data for IPC sections and laws - in a real application, this would come from an API or database
 const articles = [
   {
     id: 1,
-    title: "Understanding the Indian Penal Code: A Comprehensive Guide",
-    excerpt: "An overview of the structure and key sections of the IPC that every Indian citizen should know about.",
-    author: "Advocate Sharma",
-    date: "August 15, 2025",
+    title: "IPC Section 300: Murder",
+    excerpt: "Except in the cases hereinafter excepted, culpable homicide is murder, if the act by which the death is caused is done with the intention of causing death.",
+    lastUpdated: "Last amended in 2018",
     category: "Criminal Law",
-    readTime: "8 min read",
-    image: "/document.jpg"
+    readTime: "5 min read",
+    sectionNumber: "300",
+    punishment: "Death or life imprisonment and fine"
   },
   {
     id: 2,
-    title: "Property Rights in India: What You Need to Know",
-    excerpt: "A detailed analysis of property laws in India, covering ownership, transfer, and dispute resolution mechanisms.",
-    author: "Advocate Patel",
-    date: "July 28, 2025",
-    category: "Property Law",
-    readTime: "10 min read",
-    image: "/document.jpg"
+    title: "IPC Section 375: Rape",
+    excerpt: "A man is said to commit rape when he has sexual intercourse with a woman under circumstances falling under any of the six following descriptions.",
+    lastUpdated: "Last amended in 2021",
+    category: "Criminal Law",
+    readTime: "7 min read",
+    sectionNumber: "375",
+    punishment: "Rigorous imprisonment not less than ten years, which may extend to imprisonment for life, and fine"
   },
   {
     id: 3,
-    title: "Consumer Protection Act 2019: Key Changes and Impact",
-    excerpt: "How the new Consumer Protection Act strengthens consumer rights and introduces modern regulatory mechanisms.",
-    author: "Advocate Singh",
-    date: "June 12, 2025",
-    category: "Consumer Law",
-    readTime: "7 min read",
-    image: "/document.jpg"
+    title: "IPC Section 420: Cheating and dishonestly inducing delivery of property",
+    excerpt: "Whoever cheats and thereby dishonestly induces the person deceived to deliver any property to any person shall be punished.",
+    lastUpdated: "Last amended in 2013",
+    category: "Criminal Law",
+    readTime: "4 min read",
+    sectionNumber: "420",
+    punishment: "Imprisonment up to 7 years and fine"
   },
   {
     id: 4,
-    title: "Digital Privacy Laws in India: Current Status and Future Outlook",
-    excerpt: "An examination of India's approach to digital privacy, data protection, and the upcoming Personal Data Protection Bill.",
-    author: "Advocate Reddy",
-    date: "September 2, 2025",
-    category: "Cyber Law",
-    readTime: "12 min read",
-    image: "/document.jpg"
+    title: "IPC Section 499: Defamation",
+    excerpt: "Whoever, by words either spoken or intended to be read, or by signs or by visible representations, makes or publishes any imputation concerning any person.",
+    lastUpdated: "Last amended in 2018",
+    category: "Criminal Law",
+    readTime: "6 min read",
+    sectionNumber: "499",
+    punishment: "Simple imprisonment for up to 2 years, or fine, or both"
   },
   {
     id: 5,
-    title: "Employment Law Basics: Rights and Obligations",
-    excerpt: "Essential information about employment contracts, workplace discrimination, and dispute resolution mechanisms.",
-    author: "Advocate Khan",
-    date: "August 20, 2025",
-    category: "Labor Law",
-    readTime: "9 min read",
-    image: "/document.jpg"
+    title: "Right to Information Act, 2005",
+    excerpt: "An Act to provide for setting out the practical regime of right to information for citizens to secure access to information under the control of public authorities.",
+    lastUpdated: "Last amended in 2019",
+    category: "Constitutional Law",
+    readTime: "8 min read",
+    sectionNumber: "N/A",
+    punishment: "N/A"
   },
   {
     id: 6,
-    title: "Intellectual Property Rights in the Digital Age",
-    excerpt: "How Indian copyright, trademark and patent laws are evolving to address challenges in the digital economy.",
-    author: "Advocate Joshi",
-    date: "July 5, 2025",
-    category: "Intellectual Property",
-    readTime: "11 min read",
-    image: "/document.jpg"
+    title: "IPC Section 376: Punishment for rape",
+    excerpt: "Whoever commits rape shall be punished with rigorous imprisonment of either description for a term which shall not be less than ten years.",
+    lastUpdated: "Last amended in 2021",
+    category: "Criminal Law",
+    readTime: "5 min read",
+    sectionNumber: "376",
+    punishment: "Rigorous imprisonment not less than ten years, may extend to imprisonment for life, and fine"
   },
 ];
 
@@ -79,11 +78,10 @@ const articles = [
 const categories = [
   "All Categories",
   "Criminal Law",
+  "Constitutional Law",
+  "Family Law",
   "Property Law",
-  "Consumer Law",
-  "Cyber Law",
-  "Labor Law",
-  "Intellectual Property"
+  "Corporate Law"
 ];
 
 export default function ArticlesPage() {
@@ -106,10 +104,10 @@ export default function ArticlesPage() {
         className="mb-12 text-center"
       >
         <h1 className="text-4xl font-bold text-blue-900 dark:text-blue-300">
-          Legal Knowledge Hub
+          Indian Law Reference
         </h1>
         <p className="mt-3 text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-          Stay informed with our collection of articles on Indian law, legal procedures, and rights
+          Explore the Indian Penal Code (IPC) sections and other important Indian laws
         </p>
       </motion.div>
       
@@ -146,8 +144,8 @@ export default function ArticlesPage() {
       {filteredArticles.length === 0 ? (
         <div className="text-center py-12">
           <DocumentTextIcon className="h-16 w-16 mx-auto text-gray-400 dark:text-gray-600" />
-          <h3 className="mt-4 text-lg font-medium text-gray-900 dark:text-gray-300">No articles found</h3>
-          <p className="mt-2 text-gray-500 dark:text-gray-400">Try adjusting your search or filter to find what you're looking for.</p>
+          <h3 className="mt-4 text-lg font-medium text-gray-900 dark:text-gray-300">No legal references found</h3>
+          <p className="mt-2 text-gray-500 dark:text-gray-400">Try adjusting your search or filter to find what you&apos;re looking for.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -179,11 +177,13 @@ export default function ArticlesPage() {
                 <div className="flex items-center justify-between mt-4">
                   <div className="flex items-center">
                     <div className="h-8 w-8 rounded-full bg-blue-200 dark:bg-blue-800 flex items-center justify-center text-blue-800 dark:text-blue-200">
-                      <UserIcon className="h-4 w-4" />
+                      <span className="font-semibold text-xs">{article.sectionNumber !== "N/A" ? "§" : "LAW"}</span>
                     </div>
                     <div className="ml-2">
-                      <p className="text-sm font-medium text-gray-900 dark:text-gray-100">{article.author}</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">{article.date}</p>
+                      <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                        {article.sectionNumber !== "N/A" ? `Section ${article.sectionNumber}` : "Act"}
+                      </p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">{article.lastUpdated}</p>
                     </div>
                   </div>
                   <motion.button

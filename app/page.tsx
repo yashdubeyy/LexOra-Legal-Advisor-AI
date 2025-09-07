@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { 
   ScaleIcon, 
   DocumentTextIcon,
@@ -34,32 +34,7 @@ const TypeAnimation = ({ text, speed = 75 }: { text: string; speed?: number }) =
   return <span>{displayedText}</span>;
 };
 
-// Custom component for section reveal animations
-const RevealSection = ({ children }: { children: React.ReactNode }) => {
-  const controls = useAnimation();
-  const ref = React.useRef(null);
-  const inView = useInView(ref, { once: true, amount: 0.3 });
-  
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
-  
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={controls}
-      variants={{
-        hidden: { opacity: 0, y: 50 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-      }}
-    >
-      {children}
-    </motion.div>
-  );
-};
+// Note: We'll use motion.div with whileInView prop instead of a custom component
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
